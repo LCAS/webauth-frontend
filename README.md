@@ -4,6 +4,8 @@ This project contains the frontend for webauth project, see more @
 <https://github.com/1nfiniteloop/webauth>. The frontend is based on
 Angular framework.
 
+![webauth-frontend](https://user-images.githubusercontent.com/31454564/95255847-45546080-0822-11eb-85cd-efb4a8f974a0.png)
+
 ## Design notes
 
 * The api endpoints is dynamically fetched from the back-end at first launch
