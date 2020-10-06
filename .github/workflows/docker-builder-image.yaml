@@ -1,0 +1,26 @@
+name: Docker builder image
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - v*
+jobs:
+  builder-image:
+    name: Build and publish docker builder image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build and push to docker hub
+        uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKERHUB_USER }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          always_pull: true
+          dockerfile: ./.devcontainer/Dockerfile
+          repository: 1nfiniteloop/webauth-frontend-builder
+          tag_with_ref: true
+
