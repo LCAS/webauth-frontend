@@ -1,0 +1,13 @@
+.header {
+  width: 100%;
+  display: flex;
+}
+
+.left, .right {
+  width: 50%;
+}
+
+app-user-session {
+  float: right;
+  padding: 10px 30px;
+}

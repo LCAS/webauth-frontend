@@ -1,0 +1,7 @@
+<div *ngIf="session" class="text-icon">
+  <mat-icon>person</mat-icon>
+  <span>
+    {{session.user_name}}
+    <a *ngIf="logout" href="{{logout}}">Logout</a>
+  </span>
+</div>

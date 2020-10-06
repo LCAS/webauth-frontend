@@ -1,0 +1,17 @@
+.notification {
+  font-size: 18px;
+  padding: 10px 0px;
+}
+
+.notification button {
+  margin: 0px 7px;
+}
+
+.notification button.accept {
+  background-color: green;
+}
+
+.user-name, .service-name
+{
+  font-weight: bold;
+}

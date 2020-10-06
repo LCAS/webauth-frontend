@@ -1,0 +1,15 @@
+// Ref: https://code.visualstudio.com/docs/remote/containers#_devcontainerjson-reference
+{
+  "name": "webauth-frontend",
+  "dockerFile": "Dockerfile",
+  "extensions": [],
+  "forwardPorts": [4200],
+  "runArgs": [
+    "--name=webauth-frontend.vscode",
+    "--volume=vscode.cache:/home/build",
+    "--network=webauth",
+    "--cap-add=SYS_PTRACE",
+    "--security-opt",
+    "seccomp=unconfined"
+  ]
+}

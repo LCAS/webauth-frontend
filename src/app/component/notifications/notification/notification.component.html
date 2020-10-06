@@ -1,0 +1,9 @@
+<div class="notification">
+  <span class="user-name">{{request.user_name}}@{{request.host_name}}</span> requests authorization for <span class="service-name">{{request.service_name}}</span>
+  <button class="accept" mat-mini-fab (click)="replyConfirm()">
+    <mat-icon matListIcon>check</mat-icon>
+  </button>
+  <button mat-mini-fab color="warn" (click)="replyReject()">
+    <mat-icon matListIcon>clear</mat-icon>
+  </button>
+</div>

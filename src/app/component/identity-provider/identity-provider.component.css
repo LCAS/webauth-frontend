@@ -1,0 +1,13 @@
+.identity_provider {
+  margin: auto;
+  width: 500px;
+}
+
+.identity_provider h1 {
+  text-align: center;
+  padding: 10px 0px;
+}
+
+.identity_provider a {
+  color: green;
+}

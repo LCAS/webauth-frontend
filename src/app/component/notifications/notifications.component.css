@@ -1,0 +1,14 @@
+.notifications {
+  margin: auto;
+  width: 800px;
+}
+
+.offline {
+  width: 200px;
+  margin: auto;
+  padding: 20px 0px;
+}
+
+.disconnected {
+  color: red;
+}

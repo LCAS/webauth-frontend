@@ -1,0 +1,11 @@
+{
+  "/api": {
+    "target": "http://webauth-server:8443",
+    "secure": false
+  },
+  "/api/stream": {
+    "target": "ws://webauth-server:8443",
+    "secure": false,
+    "ws": true
+  }
+}

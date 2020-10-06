@@ -1,0 +1,10 @@
+<div class="identity_provider">
+  <h1>{{title}}</h1>
+  <mat-nav-list>
+    <a mat-list-item *ngFor="let provider of providers" href="{{ provider.path }}">
+      <mat-icon matListIcon>account_circle</mat-icon>
+      <div mat-line>{{ provider.name }}</div>
+      <mat-divider *ngIf="!last"></mat-divider>
+    </a>
+  </mat-nav-list>
+</div>
