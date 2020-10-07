@@ -1,6 +1,7 @@
 // Ref: https://code.visualstudio.com/docs/remote/containers#_devcontainerjson-reference
 {
   "name": "webauth-frontend",
+  "image": "1nfiniteloop/webauth-frontend-builder",
   "dockerFile": "Dockerfile",
   "extensions": [],
   "forwardPorts": [4200],

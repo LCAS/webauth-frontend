@@ -28,8 +28,9 @@ see more @ <https://code.visualstudio.com/docs/remote/containers>
 * Add a docker network for backend requests with:
   `docker network create webauth`.
 * Open VS Code in dev-container.
-* VS Code terminal must be run in interactive mode to expose angular cli-tools:
+* Terminal must be run in interactive mode to expose angular cli-tools:
   `/bin/bash -l`.
+* Install dependencies with `npm install`.
 
 ### Develop
 

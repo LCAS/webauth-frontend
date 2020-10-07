@@ -1,26 +1,36 @@
-name: Docker builder image
-
+name: Build frontend
 on:
   push:
     branches:
       - main
     tags:
       - v*
+
 jobs:
-  builder-image:
-    name: Build and publish docker builder image
+  build:
+    name: Build and publish frontend
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Build and push to docker hub
-        uses: docker/build-push-action@v1
+      # ref: https://github.com/actions/setup-node
+      - name: Setup node
+        uses: actions/setup-node@v1
         with:
-          username: ${{ secrets.DOCKERHUB_USER }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          always_pull: true
-          dockerfile: ./.devcontainer/Dockerfile
-          repository: 1nfiniteloop/webauth-frontend-builder
-          tag_with_ref: true
+          node-version: '14'
 
+      - name: Install environment
+        run: npm install
+
+      - name: Build
+        run: npm run build -- --prod --deploy-url /static/
+
+      - name: Package
+        run: tar -C dist/ -czf dist/webauth-frontend.tar.gz webauth-frontend
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: webauth-frontend
+          path: dist/webauth-frontend.tar.gz
