@@ -1,8 +1,6 @@
 name: Build frontend
 on:
   push:
-    branches:
-      - main
     tags:
       - v*
 
@@ -26,11 +24,31 @@ jobs:
       - name: Build
         run: npm run build -- --prod --deploy-url /static/
 
-      - name: Package
-        run: tar -C dist/ -czf dist/webauth-frontend.tar.gz webauth-frontend
-
-      - name: Upload artifact
+      - name: Upload build artifact
         uses: actions/upload-artifact@v2
         with:
           name: webauth-frontend
-          path: dist/webauth-frontend.tar.gz
+          path: dist/webauth-frontend
+
+      # ref: https://github.com/actions/create-release
+      - name: Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+
+      - name: Package assets
+        run: tar -C dist/ -czf dist/webauth-frontend.tar.gz webauth-frontend
+
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./dist/webauth-frontend.tar.gz
+          asset_name: webauth-frontend.tar.gz
+          asset_content_type: application/gzip
